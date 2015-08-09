@@ -101,6 +101,7 @@ completeData <- transform(completeData, dayType = as.factor(ifelse(weekdays(as.D
 
 Make a panel plot containing a time series plot (i.e. `type = "l"`) of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was created using **simulated data**:
 ```{r}
-qplot(x = interval, y = steps, data = completeData, geom = "line", facets = dayType ~ .)
+imputedAverage <- aggregate(steps ~ interval + dayType, data = completeData, mean)
+qplot(x = interval, y = steps, data = imputedAverage, geom = "line", facets = dayType ~ .)
 ```
 
